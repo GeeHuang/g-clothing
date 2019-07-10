@@ -9,6 +9,7 @@ import ContactPage from './views/contact/contact.component';
 import SignInPage from './views/sign-in/sign-in.component';
 import Header from './components/header/header.component';
 import {auth} from './firebase/firebase.utils';
+//import {createUserProfileDocument} from './firebase/firebase.utils';
 
 class App extends React.Component {
   constructor(){
@@ -22,10 +23,9 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount(){
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({currentUser: user});
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(userAuth => {
+    
       
-      //console.log(user);
     })
   }
 
