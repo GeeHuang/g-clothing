@@ -6,7 +6,7 @@ import './App.css';
 import HomePage from './views/homepage/homepage.component';
 import ShopPage from './views/shop/shop.component';
 import ContactPage from './views/contact/contact.component';
-import SignInPage from './views/sign-in/sign-in.component';
+import SignInSignUpPage from './views/sign-in-sign-up/sign-in-sign-up.component';
 import Header from './components/header/header.component';
 import {auth} from './firebase/firebase.utils';
 import {createUserProfileDocument} from './firebase/firebase.utils';
@@ -34,6 +34,8 @@ class App extends React.Component {
               ...snapshot.data()
             }
           });
+
+          //console.log(this.state);
         });
       }
 
@@ -53,7 +55,7 @@ class App extends React.Component {
           <Route exact path='/' component={HomePage}/>
           <Route exact path='/shop' component={ShopPage}/>
           <Route exact path='/contact' component={ContactPage}/>
-          <Route exact path='/signin' component={SignInPage}/>
+          <Route exact path='/sign-in-sign-up' component={SignInSignUpPage}/>
         </Switch>
       </div>
     );
