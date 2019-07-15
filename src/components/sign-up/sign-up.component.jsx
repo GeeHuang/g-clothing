@@ -32,6 +32,10 @@ export default class SignUp extends Component {
             return;
         }
 
+        if(password.length < 6){
+            alert("password needs to be at least 6 character or number");
+            return;
+        }
         try{
             const {user} = await auth.createUserWithEmailAndPassword(email, password);
             await createUserProfileDocument(user, {displayName});
