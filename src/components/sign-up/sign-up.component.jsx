@@ -32,10 +32,6 @@ export default class SignUp extends Component {
             return;
         }
 
-        if(password.length < 6){
-            alert("password needs to be at least 6 character or number");
-            return;
-        }
         try{
             const {user} = await auth.createUserWithEmailAndPassword(email, password);
             await createUserProfileDocument(user, {displayName});
@@ -47,6 +43,14 @@ export default class SignUp extends Component {
                 confirmPassword: ''
             });
         }catch(error){
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // eslint-disable-next-line eqeqeq
+            if (errorCode == 'auth/weak-password') {
+                alert('The password is too weak.');
+              } else {
+                alert(errorMessage);
+              }
             console.error(error);
         }
     }
